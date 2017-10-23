@@ -1,3 +1,4 @@
+setting up:
 echo "# spark-training" >> README.md
 git init
 git add README.md
@@ -6,8 +7,98 @@ git remote add origin https://github.com/cbitkvk/spark-training.git
 git push -u origin master
 
 
+how to add files go to folder spark-training
+
+git add .
+git commit -mm "comment"
+git push -u origin master
+
+
+
 user:root
 password: redhat
 
 
 trainer ip: 192.168.16.127
+
+
+install java from oracle ( which has name called hotspot)
+jdk-8u151-linux-x64.rpm
+
+set java_home and path variables
+
+
+1. Immutability -- val -- does not allow modification of data
+2. Type inference -- automatically understand the datatype for a variable or val
+
+eg: val n="hello"
+p: String = hello
+
+Here it identified the datatype to be String without we defining it.
+
+
+-----------------------
+how to compile code in scala
+scalac < scala code file>
+it creates two class files based on the object name.
+-----------------------
+
+sample program: test.scala file
+object myHello {
+
+def main(args: Array[String]){
+var n:String="hello"
+println(n)
+}
+}
+
+
+compile:
+scalac test.scala
+it will create myHello$.class and myHello.class. Two classfiles for each object defined in the test.scala file.
+
+
+
+scala works on singleton object.
+
+
+
+---------------------------------------------------------------------
+
+## Multi constructor. creating a constructor which would work for different parameters list. Here default is 3 arguements but we created a "this" special method which 
+would set the bal field to 0 by default when we create a instance of acct with only 2 parameters.
+
+class acct(name:String, actid:Int, bal:Int){
+
+def this(n:String,a:Int)={
+this(n,a,0)
+}
+
+def show()={
+println(name)
+println(actid)
+println(bal)
+}
+
+}
+
+object pk{
+def main(args: Array[String])={
+var n=new acct("hello",123,12)
+n.show()
+
+var p=new acct("hello",123)
+p.show()
+}
+}
+
+
+
+## Result: 
+[root@localhost examples]# scala multiconstruct.scala
+hello
+123
+12
+hello
+123
+0
