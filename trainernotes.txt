@@ -1,0 +1,819 @@
+Vimal  Daga
+
+
+Scala : Brevity : sweet and simple (lesser code)
+
+Scala : Functional Programming  & OOPS(hybrid language)
+-----------------------------------
+
+[root@localhost Downloads]# rpm  -ivh  jdk-8u151-linux-x64.rpm 
+
+[root@localhost Downloads]# export JAVA_HOME=/usr/java/jdk1.8.0_151/
+[root@localhost Downloads]# export PATH=/usr/java/jdk1.8.0_151/bin/:$PATH
+
+[root@localhost Downloads]# gedit   /root/.bashrc  
+export JAVA_HOME=/usr/java/jdk1.8.0_151/
+export PATH=/usr/java/jdk1.8.0_151/bin/:$PATH
+
+[root@localhost ~]# java -version
+
+
+[root@localhost Downloads]# rpm  -ivh  scala-2.12.4.rpm 
+[root@localhost Downloads]# scala  -version
+
+
+4 ways to code in scala:
+------------------------
+REPL (live interpret)
+Batch Mode
+IDE
+Editor: Compile
+
+
+
+Immutability :  "val" : thread safe
+val  data = 
+1 vimal	M
+2 dgdg	F
+3 dgg    
+4  sdgf M
+
+val data1=
+1 vimal	M
+2 dgdg	F
+4  sdgf M
+
+
+Type inferenence:
+---------------------
+> var x=5
+Int
+
+
+scala> val x:String="hi"
+
+scala> :quit
+
+
+[root@localhost ~]# vim basic.scala 
+[root@localhost ~]# cat basic.scala 
+val x:String = "hello"
+
+println(x)
+
+[root@localhost ~]# scala  basic.scala 
+hello
+
+
+
+
+[root@localhost ~]# cat basic.scala 
+object myHello {
+
+def main(args: Array[String]) {
+	val x:String = "hello"
+	println(x)
+}
+
+
+}
+
+Singleton Object : myHello
+
+scalac  basic.scala
+scala  myHello 
+
+
+[root@localhost ws]# fsc   namedargument.scala
+[root@localhost ws]# scala namedarg
+
+Anonymuous Function:
+-----------------------
+scala> val r = (x:Int, y:Int) =>  {  x + y }
+r: (Int, Int) => Int = $$Lambda$1114/1566390876@6e0d16a4
+
+scala> r(1,4)
+res2: Int = 5
+
+
+scala> val  s = (-10 to 10 ).toSet
+s: scala.collection.immutable.Set[Int] = Set(0, 5, 10, -7, -8, -3, 1, 6, -4, 9, 2, -5, -10, 7, 3, -1, -9, 8, -6, 4, -2)
+
+scala> s.filter(x => isEven(x))
+res8: scala.collection.immutable.Set[Int] = Set(0, 10, -8, 6, -4, 2, -10, 8, -6, 4, -2)
+
+scala> s.filter(isEven(_))
+res9: scala.collection.immutable.Set[Int] = Set(0, 10, -8, 6, -4, 2, -10, 8, -6, 4, -2)
+
+scala> s.filter(isEven)
+res10: scala.collection.immutable.Set[Int] = Set(0, 10, -8, 6, -4, 2, -10, 8, -6, 4, -2)
+
+
+
+
+
+scala> def cap(s:String) = s.head.toUpper  +  s.tail.toLowerCase
+
+
+
+
+scala> def cap(s:String) = s.head.toUpper  +  s.tail.toLowerCase
+cap: (s: String)String
+
+scala> var  names = List("ViMal", "GrEy", "pOp")
+names: List[String] = List(ViMal, GrEy, pOp)
+
+scala> names.map(s => s.head.toUpper  +  s.tail.toLowerCase)
+res15: List[String] = List(Vimal, Grey, Pop)
+
+
+
+
+
+
+scala> var  names = List("ViMal", "GrEy", "pOp")
+names: List[String] = List(ViMal, GrEy, pOp)
+
+scala> names.map(s => s.head.toUpper  +  s.tail.toLowerCase)
+res16: List[String] = List(Vimal, Grey, Pop)
+
+
+scala> var b = List(1,3,7,8,5)
+b: List[Int] = List(1, 3, 7, 8, 5)
+
+scala> b
+res17: List[Int] = List(1, 3, 7, 8, 5)
+
+scala> b.foreach {
+     | println(_)
+     | }
+1
+3
+7
+8
+5
+
+
+
+scala> b.foreach {
+     | println
+     | }
+1
+3
+7
+8
+5
+
+
+scala> b foreach println
+
+
+
+scala> var a = List.range(1,10,1)
+a: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+scala> 
+
+scala> var a = List.range(1,10,2)
+a: List[Int] = List(1, 3, 5, 7, 9)
+
+scala> a
+res30: List[Int] = List(1, 3, 5, 7, 9)
+
+scala> var a = List.range(10,1,-1)
+a: List[Int] = List(10, 9, 8, 7, 6, 5, 4, 3, 2)
+
+scala> var a = List.range(10,0,-1)
+a: List[Int] = List(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+
+
+
+
+scala> var b = List.tabulate(10){ a => a*a }
+b: List[Int] = List(0, 1, 4, 9, 16, 25, 36, 49, 64, 81)
+
+scala> b
+res31: List[Int] = List(0, 1, 4, 9, 16, 25, 36, 49, 64, 81)
+
+scala> var b = List.tabulate(10){ a => a*a }
+
+scala> var c = List.fill(5){12}
+
+
+
+scala> List.range(1,100).filter(x => x%2 == 0)
+scala> List.range(1,100).filter( _%2 == 0)
+
+
+
+Closure :
+---------
+
+scala> var p = 10
+
+scala> def getHike(salary:Double) = salary * p/100
+
+
+scala> getHike(10000)
+
+
+
+
+scala> List(1,2) zip List(3,4)
+
+scala> List(1,2) zip List(3,4) map { case  (a,b) => a + b}
+
+
+> lazy val x = { print("test") ; 10 }
+
+> x
+
+
+
+
+scala> import scala.io._
+
+scala> val data = Source.fromFile("/etc/passwd").getLines().toList.filter( lines => lines.contains("bash"))
+
+
+scala> data foreach println
+
+for pure function test : referential transparency
+
+Tail recursion :
+
+Lazy Evaluation :
+--------------------
+
+scala> import scala.io._
+
+scala> val data = Source.fromFile("/etc/passwd").getLines().toStream.filter(_.contains("bash"))
+
+scala> data foreach println
+
+
+
+scala> val user = sc.textFile("/etc/passwd")
+
+scala> user.first()
+
+
+
+
+
+
+
+scala> val user = sc.textFile("/etc/passwd")
+user: org.apache.spark.rdd.RDD[String] = /etc/passwd MapPartitionsRDD[5] at textFile at <console>:27
+
+scala> val bashuser =  user.filter(lines =>  lines.contains("bash"))
+bashuser: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[6] at filter at <console>:29
+
+scala> bashuser.collect()
+res6: Array[String] = Array(root:x:0:0:root:/root:/bin/bash, rps:x:1000:1000:rps:/home/rps:/bin/bash, vimal:x:1001:1001::/home/vimal:/bin/bash)
+
+scala> val out = bashuser.collect()
+out: Array[String] = Array(root:x:0:0:root:/root:/bin/bash, rps:x:1000:1000:rps:/home/rps:/bin/bash, vimal:x:1001:1001::/home/vimal:/bin/bash)
+
+scala> out foreach println
+root:x:0:0:root:/root:/bin/bash
+rps:x:1000:1000:rps:/home/rps:/bin/bash
+vimal:x:1001:1001::/home/vimal:/bin/bash
+
+
+
+
+scala> bashuser.toDebugString
+
+
+
+
+scala> val my = List(1,2,3,4)
+my: List[Int] = List(1, 2, 3, 4)
+
+scala> my foreach println
+
+
+
+
+scala> val  mylist = sc.parallelize(List(1,2,3,4))
+mylist: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[7] at parallelize at <console>:27
+
+scala> mylist.collect()
+res10: Array[Int] = Array(1, 2, 3, 4)
+
+scala> mylist.collect()  foreach println
+
+
+
+
+
+scala> val  mylist = sc.parallelize(List(1,2,3,4))
+mylist: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[8] at parallelize at <console>:27
+
+scala> val sRDD = mylist.map(x => x*x )
+sRDD: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[9] at map at <console>:29
+
+scala> sRDD.collect()
+res12: Array[Int] = Array(1, 4, 9, 16)
+
+
+
+
+
+scala> val  mylist = sc.parallelize(List(1,2,3,4) , 2 )
+mylist: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[10] at parallelize at <console>:27
+
+scala> val sRDD = mylist.map(x => x*x )
+sRDD: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[11] at map at <console>:29
+
+scala> sRDD.collect()
+res13: Array[Int] = Array(1, 4, 9, 16)
+
+
+
+
+
+scala> val  mylist = sc.parallelize(List(1,2,3,4,5) , 2 )
+mylist: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[13] at parallelize at <console>:27
+
+scala> val filterRDD = mylist.filter(x => x != 2 )
+filterRDD: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[14] at filter at <console>:29
+
+scala> val mRDD = filterRDD.map(x => x*x )
+mRDD: org.apache.spark.rdd.RDD[Int] = MapPartitionsRDD[15] at map at <console>:31
+
+scala> mRDD.collect()
+res14: Array[Int] = Array(1, 9, 16, 25)
+
+scala> mRDD.toDebugString
+
+
+
+
+scala> sc.parallelize(List(1,2,3,4,5) , 2 ).filter(x => x != 2).map(y => y*y).collect()
+
+
+
+scala> val lines = sc.parallelize(List("hello world" , "how are you"))
+lines: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[21] at parallelize at <console>:27
+
+scala> val word =  lines.flatMap(x => x.split(" "))
+word: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[22] at flatMap at <console>:29
+
+scala> word.collect()
+res18: Array[String] = Array(hello, world, how, are, you)
+
+scala> word foreach println
+hello
+world
+how
+are
+you
+
+
+
+
+
+[root@localhost Downloads]# tar -xvzf hadoop-2.7.4.tar.gz 
+
+[root@localhost Downloads]# mv hadoop-2.7.4  /hadoop
+
+[root@localhost Downloads]# export HADOOP_HOME=/hadoop/
+[root@localhost Downloads]# export PATH=/hadoop/bin/:/hadoop/sbin/:$PATH
+
+
+
+[root@localhost Downloads]# gedit  /root/.bashrc 
+export HADOOP_HOME=/hadoop/
+export PATH=/hadoop/bin/:/hadoop/sbin/:$PATH
+
+[root@localhost hadoop]# cd /hadoop/etc/hadoop/
+
+[root@localhost hadoop]# vim hdfs-site.xml 
+
+<configuration>
+
+<property>
+<name>dfs.name.dir</name>
+<value>/name</value>
+</property>
+
+<property>
+<name>dfs.data.dir</name>
+<value>/data</value>
+</property>
+
+</configuration>
+
+
+[root@localhost hadoop]# vim core-site.xml 
+
+
+<configuration>
+
+<property>
+<name>fs.default.name</name>
+<value>hdfs://127.0.0.1:9001</value>
+</property>
+
+</configuration>
+
+
+[root@localhost ~]# hadoop namenode -format 
+
+[root@localhost ~]# hadoop-daemon.sh  start namenode
+
+[root@localhost ~]# hadoop-daemon.sh  start datanode
+
+[root@localhost ~]# jps 
+
+
+[root@localhost ~]# hadoop dfsadmin -report 
+
+
+[root@localhost ~]# hadoop  fs -ls /
+
+
+[root@localhost ~]# hadoop  fs -put name.txt   /
+
+
+
+
+
+scala> val myFile =  sc.textFile("hdfs://127.0.0.1:9001/name.txt")
+scala> val tokenizedFileData = myFile.flatMap(line => line.split(" "))
+scala> val countPrep =  tokenizedFileData.map(word =>  (word , 1))
+scala> val counts = countPrep.reduceByKey( (accumValue ,newValue) => accumValue + newValue )
+scala> val sortedCounts = counts.sortBy( x => x._2 , false )
+scala> sortedCounts.take(3)
+scala> sortedCounts.saveAsTextFile("hdfs://127.0.0.1:9001/count.txt")
+
+or
+
+scala> val myFile =  sc.textFile("hdfs://127.0.0.1:9001/name.txt")
+scala> val tokenizedFileData = myFile.flatMap(line => line.split(" "))
+scala> tokenizedFileData.countByValue
+
+
+
+
+scala> val getArea = (radius:Double) => { 
+     | val PI = 3.14
+     | PI*radius*radius
+     | }:Double
+getArea: Double => Double = $$Lambda$1027/1625932709@7e5843db
+
+scala> def getArea2(radius:Double):Double = { 
+     | val PI = 3.14
+     | PI*radius*radius
+     | }
+getArea2: (radius: Double)Double
+
+scala> getArea(2)
+res0: Double = 12.56
+
+scala> getArea2(2)
+res1: Double = 12.56
+
+
+
+# ls -l  /spark/examples/src/main/resources/people.json
+
+val  df = spark.read.json("/spark/examples/src/main/resources/people.json")
+
+scala> df.show()
+
+scala> df.printSchema() 
+
+scala> df.select("name","age").show()
+
+
+scala> df.select($"name",$"age" + 10 ).show()
+scala> import spark.implicits._
+
+
+scala> df.filter($"age" > 20).show()
+
+scala> df.groupBy("age").count().show()
+
+
+scala> df.createOrReplaceTempView("mytable")
+
+
+
+scala> spark.sql("select * from mytable").show()
+
+
+scala> val myfile = sc.textFile("hdfs://127.0.0.1:9001/name.txt")
+scala> val df = myfile.toDF("line")
+scala> val  out =  df.filter(col("line").like("%wet%"))
+scala> out.count()
+
+
+[root@localhost ~]# useradd  krish
+[root@localhost ~]# cat /etc/passwd
+
+
+scala> case class User(name:String, password:String, uid:Int, gid:Int, comment:String, homedir:String, shell:String)
+
+scala> val userDF = sc.textFile("/etc/passwd").map(_.split(":")).map(x => User(x(0), x(1), x(2).toInt , x(3).toInt , x(4), x(5), x(6)  )  ).toDF
+
+
+scala> userDF.select("name").count()
+scala> userDF.select("name").show()
+
+
+scala> userDF.groupBy("shell").agg(sum("uid")).show()
+
+scala> userDF.groupBy("shell").agg(max("uid")).show()
+
+scala> userDF.groupBy("shell").agg(max("uid"), sum("gid")).show()
+
+
+scala> userDF.createOrReplaceTempView("myuser")
+
+scala> val myout = spark.sql("select name,uid from  myuser  where uid BETWEEN 1000 AND 2000")
+
+scala> myout.write.format("csv").save("finalout1")
+
+
+scala> val newDF = spark.read.load("/spark/examples/src/main/resources/users.parquet")
+
+
+
+scala> val people=spark.read.parquet("...")
+
+scala> val department=spark.read.parquet(".....")
+
+
+scala> people.filter($"age" > 30).join(people("deptid")  == department("id")).groupBy(department("name"), "gender")
+
+
+Implicit Cnoversion :
+-------------------------
+
+
+scala> case class IntExtensions(value:Int) {
+     | def plus(operand:Int) = value + operand
+     | }
+
+
+scala> import scala.language.implicitConversions
+import scala.language.implicitConversions
+
+scala> implicit def intToIntExtensions(value:Int) = {
+     | IntExtensions(value)
+     | }
+
+
+scala> 1.plus(1)
+
+
+
+[root@localhost Downloads]# tar -xvzf mysql-connector-java-5.1.44.tar.gz 
+[root@localhost Downloads]# cd mysql-connector-java-5.1.44/
+[root@localhost mysql-connector-java-5.1.44]# cp mysql-connector-java-5.1.44-bin.jar   /spark/jars/
+
+
+
+
+[root@localhost ftp]# cd /etc/yum.repos.d/
+[root@localhost yum.repos.d]# vim my.repo 
+[lw]
+baseurl=ftp://192.168.16.166/pub/
+gpgcheck=0
+
+[root@localhost ~]# yum  repolist 
+
+[root@localhost ~]# yum  install mariadb-server 
+[root@localhost ~]# systemctl restart mariadb
+
+[root@localhost ~]# mysqladmin -u root password "redhat"
+
+[root@localhost ~]# mysql -u  root -predhat
+
+
+
+MariaDB [(none)]> create database jpmc;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> use jpmc;
+Database changed
+MariaDB [jpmc]> create table emp (id int(5), name char(20), salary int(10));
+Query OK, 0 rows affected (0.03 sec)
+
+
+MariaDB [jpmc]> insert into emp (id,name,salary)  values (1, "vimal" , 100);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [jpmc]> insert into emp (id,name,salary)  values (2, "eric" , 200);
+Query OK, 1 row affected (0.00 sec)
+
+
+
+scala> val mysqlDF = spark.read.format("jdbc").option("url", "jdbc:mysql://localhost/jpmc").option("driver" , "com.mysql.jdbc.Driver").option("dbtable" , "emp").option("user", "root").option("password", "redhat").load()
+
+
+
+scala> val  dataset = Seq((0, "vimal"), (1, "linux")).toDF("id" , "name")
+scala> val upper:String => String = _.toUpperCase
+
+scala> import org.apache.spark.sql.functions.udf
+scala> val upperUDF = udf(upper)
+scala> dataset.withColumn("upper", upperUDF('text)).show()
+or
+scala> dataset.withColumn("upper", upperUDF($"text")).show()
+
+
+
+[root@localhost ~]# spark-shell --master local[2] 
+
+
+
+
+
+[root@localhost ~]# cat my.scala 
+import org.apache.spark.SparkContext
+import org.apache.spark.SparkConf
+
+
+object hello {
+
+	def main(args: Array[String]){
+
+	val conf = new SparkConf()
+	val sc = new SparkContext(conf)
+
+
+
+	}
+
+}
+
+[root@localhost ~]# scalac   -classpath /spark/jars/spark-core_2.11-2.1.0.jar    my.scala
+
+
+[root@localhost Downloads]# tar -xvzf scala-SDK-4.7.0-vfinal-2.12-linux.gtk.x86_64.tar.gz 
+
+[root@localhost Downloads]# cd eclipse/
+
+[root@localhost eclipse]# ./eclipse 
+
+
+[root@localhost Downloads]# mv NYPD_7_Major_Felony_Incidents.csv  /root/nyc.csv
+
+
+scala> var data = sc.textFile("/root/nyc.csv")
+scala> val header = data.first
+scala> val actualdata = data.filter( lines => lines !=  header)
+
+scala> var cleanheader =  header.replace(" " , "_").replace("/", "_")
+
+spark with scala doc :
+
+goo.gl/SJ5xS8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost Downloads]# tar  -xvzf spark-2.1.0-bin-hadoop2.7.tgz 
+[root@localhost Downloads]# mv  spark-2.1.0-bin-hadoop2.7/  /spark 
+
+[root@localhost spark]# export  SPARK_HOME=/spark/
+[root@localhost spark]# export PATH=/spark/bin/:$PATH
+
+[root@localhost spark]#  gedit  /root/.bashrc  
+
+
+export  SPARK_HOME=/spark/
+export PATH=/spark/bin/:$PATH
+
+
+scala> sc.master
+scala> sc.version
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
